@@ -1,0 +1,21 @@
+[color-theme="light"] {
+  --color-background: #fdfcfd;
+  --color-placeholder: #8e8c99;
+
+  --color-border: #d0cdd7;
+
+  --color-text-primary: #211f26;
+  --color-text-secondary: #65636d;
+  --color-text-tertiary: #402060;
+}
+
+[color-theme="dark"] {
+  --color-background: #121113;
+  --color-placeholder: #6f6d78;
+
+  --color-border: #49474e;
+
+  --color-text-primary: #eeeef0;
+  --color-text-secondary: #b5b2bc;
+  --color-text-tertiary: #ecd9fa;
+}
