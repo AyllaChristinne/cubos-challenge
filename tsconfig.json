@@ -12,7 +12,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "@/types/*": ["types/*"],
+      "@/services/*": ["services/*"],
+      "@/components/*": ["components/*"],
+      "@/assets/*": ["assets/*"],
+      "@/styles/*": ["styles/*"],
+      "@/context/*": ["context/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "global.d.ts"]
 }
