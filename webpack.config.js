@@ -1,5 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+dotenv.config();
 
 module.exports = {
   entry: './src/index.tsx',
@@ -23,17 +27,29 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', "sass-loader"],
+        test: /\.svg$/,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.scss$/i,
+        exclude: /\.module\.scss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+     alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_TMDB_API_KEY': JSON.stringify(process.env.REACT_APP_TMDB_API_KEY),
+      'process.env.REACT_APP_TMDB_API_TOKEN': JSON.stringify(process.env.REACT_APP_TMDB_API_TOKEN)
+    })
   ],
 };
