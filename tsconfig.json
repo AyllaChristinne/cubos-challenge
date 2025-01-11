@@ -19,7 +19,7 @@
       "@/services/*": ["services/*"],
       "@/components/*": ["components/*"],
       "@/assets/*": ["assets/*"],
-      "@/styles/*": ["styles/*"],
+      "@/icons/*": ["icons/*"],
       "@/context/*": ["context/*"]
     }
   },

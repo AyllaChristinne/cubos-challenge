@@ -1,0 +1,32 @@
+$SM: "min-width: 575px";
+$MD: "min-width: 767px";
+$LG: "min-width: 1024px";
+$XL: "min-width: 1288px";
+
+@mixin media($size) {
+  @if $size == "SM" {
+    @media (#{$SM}) {
+      @content;
+    }
+  }
+  @if $size == "MD" {
+    @media (#{$MD}) {
+      @content;
+    }
+  }
+  @if $size == "LG" {
+    @media (#{$LG}) {
+      @content;
+    }
+  }
+  @if $size == "XL" {
+    @media (#{$XL}) {
+      @content;
+    }
+  }
+}
+
+@mixin focusOutline() {
+  outline: #00a6fb solid 2px;
+  outline-offset: 2px;
+}
