@@ -20,7 +20,8 @@
       "@/components/*": ["components/*"],
       "@/assets/*": ["assets/*"],
       "@/icons/*": ["icons/*"],
-      "@/context/*": ["context/*"]
+      "@/context/*": ["context/*"],
+      "@/constants/*": ["constants/*"]
     }
   },
   "include": ["src", "global.d.ts"]

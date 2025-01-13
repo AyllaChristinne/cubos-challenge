@@ -15,7 +15,7 @@ const ThemeContext = createContext<IThemeContext | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
-    const storedTheme = window.localStorage.getItem("@cubos-movies/theme");
+    const storedTheme = localStorage.getItem("@cubos-movies/theme");
     if (storedTheme === "light" || storedTheme === "dark") {
       return storedTheme;
     }

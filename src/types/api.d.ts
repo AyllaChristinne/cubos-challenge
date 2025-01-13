@@ -1,4 +1,4 @@
-import { IMovieTrending } from "./movies";
+import { IMovieGenre, IMovieTrending } from "./movies";
 
 export interface ISuccessfulResponse {
   page: number;
@@ -6,4 +6,8 @@ export interface ISuccessfulResponse {
 
   total_pages: number;
   total_results: number;
+}
+
+export interface ISuccessfulGenreResponse {
+  genres: Array<IMovieGenre>;
 }

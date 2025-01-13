@@ -21,3 +21,15 @@ export interface TrendingType {
   total_pages: number;
   total_results: number;
 }
+
+interface IMovieGenre {
+  id: number;
+  name: string;
+}
+
+export interface IMovieFilters {
+  query?: string;
+  genre?: IMovieGenre;
+  rating?: number;
+  release_date?: string;
+}
