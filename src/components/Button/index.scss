@@ -1,0 +1,41 @@
+.button {
+  min-width: 48px;
+  min-height: 36px;
+  border: none;
+}
+
+.button__primary {
+  background-color: var(--color-primary-9);
+  color: var(--color-text-neutral);
+
+  &:hover {
+    background-color: var(--color-primary-10);
+  }
+
+  &:active {
+    background-color: var(--color-primary-8);
+  }
+
+  &:disabled {
+    background-color: var(--color-placeholder);
+    color: var(--color-text-disabled);
+  }
+}
+
+.button__secondary {
+  background-color: var(--color-primary-alpha-2);
+  color: var(--color-text-alternative);
+
+  &:hover {
+    background-color: var(--color-primary-alpha-3);
+  }
+
+  &:active {
+    background-color: var(--color-primary-alpha-1);
+  }
+
+  &:disabled {
+    background-color: var(--color-mauve-alpha-3);
+    color: var(--color-text-disabled);
+  }
+}
