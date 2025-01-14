@@ -1,4 +1,5 @@
 import { getGenresFromArray } from "../../functions/genresFromArray";
+import CircleProgress from "../CircleProgress";
 import "./index.scss";
 
 interface ICardProps {
@@ -9,7 +10,7 @@ interface ICardProps {
   onClick?: VoidFunction;
 }
 
-export const Card = ({
+export const ImageCard = ({
   image_path,
   movie_genres,
   movie_name,
@@ -19,7 +20,7 @@ export const Card = ({
   const formattedRating = rating && (rating * 10).toFixed();
   return (
     <div
-      className="card_container"
+      className={`card_container${onClick ? "__withAction" : ""}`}
       onClick={onClick}
       onKeyDown={(e) => {
         if (e.key === "Enter" && onClick) onClick();
@@ -39,22 +40,7 @@ export const Card = ({
 
       {rating && (
         <div className="card_popularity">
-          <svg className="progress_circle" viewBox="0 0 36 36">
-            <path
-              className="circle_background"
-              d="M18 2.0845 
-             a 15.9155 15.9155 0 0 1 0 31.831 
-             a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-            <path
-              className="circle_progress"
-              d="M18 2.0845 
-             a 15.9155 15.9155 0 0 1 0 31.831 
-             a 15.9155 15.9155 0 0 1 0 -31.831"
-              style={{ strokeDasharray: `${formattedRating}, 100` }}
-            />
-          </svg>
-          <span className="progress_text">{formattedRating}%</span>
+          <CircleProgress percent={formattedRating} />
         </div>
       )}
     </div>

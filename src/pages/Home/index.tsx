@@ -4,7 +4,7 @@ import { getMoviesWithFilters, getTrending } from "@/services/movies";
 import { IMovieFilters, IMovieTrending } from "@/types/movies";
 import { FilterOptions } from "./components/FilterOptions";
 import "./index.scss";
-import { Card } from "@/components/Card";
+import { ImageCard } from "@/components/ImageCard";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
@@ -57,7 +57,7 @@ export const Home = () => {
       {!isLoading && currentMovies && (
         <div className="home_movies">
           {currentMovies.map((movie) => (
-            <Card
+            <ImageCard
               key={movie.id}
               image_path={movie.backdrop_path}
               movie_genres={movie.genre_ids}
