@@ -1,0 +1,40 @@
+@use "../../../../styles/mixins.scss";
+
+.filters_header,
+.filters_more {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.search_icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-placeholder);
+}
+
+.filters_headerButton {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.filters_more {
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+@include mixins.media("SM") {
+  .filters_section {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .filters_more {
+    flex-direction: row;
+
+    & > * {
+      flex: 1;
+    }
+  }
+}

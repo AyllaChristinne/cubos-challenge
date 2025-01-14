@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./index.scss";
-import { handleKeyDown } from "./handleKeyDown";
 import { CloseIcon } from "@/icons/Close";
 import { ChevronDownIcon } from "@/icons/ChevronDown";
 

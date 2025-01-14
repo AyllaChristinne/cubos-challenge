@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useGenres } from "@/context/GenreContext";
 import { IMovieGenre, IMovieFilters } from "@/types/movies";
@@ -6,22 +6,22 @@ import { ratingOptions } from "@/constants/rating";
 import { SearchIcon } from "@/icons/Search";
 import { Input } from "../Input";
 import { Dropdown } from "../Dropdown";
+import { Button } from "@/components/Button";
+import { FilterIcon } from "@/icons/Filters";
 import "./index.scss";
 
-interface ISortOptionsProps {
+interface IFilterOptionsProps {
   onFiltersChange: (newFilters: IMovieFilters) => void;
 }
 
-export const SortOptions = ({ onFiltersChange }: ISortOptionsProps) => {
+export const FilterOptions = ({ onFiltersChange }: IFilterOptionsProps) => {
   const [showMoreFilters, setShowMoreFilters] = useState<boolean>(false);
   const [search, setSearch] = useState<string | undefined>("");
   const [genre, setGenre] = useState<IMovieGenre | undefined>(undefined);
   const [rating, setRating] = useState<
     { value: number; label: string } | undefined
   >(undefined);
-  const [releaseYear, setReleaseYear] = useState<string | undefined>(undefined);
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const releaseYearInputRef = useRef<HTMLInputElement>(null);
   const genres = useGenres();
 
   function toggleFilters() {
@@ -33,13 +33,12 @@ export const SortOptions = ({ onFiltersChange }: ISortOptionsProps) => {
       query: search,
       genre,
       rating: rating?.value,
-      release_date: releaseYear,
     });
-  }, [search, genre, rating, releaseYear]);
+  }, [search, genre, rating]);
 
   return (
-    <div>
-      <div>
+    <section className="filters_section">
+      <div className="filters_header">
         <Input
           ref={searchInputRef}
           onChange={(value) => {
@@ -51,11 +50,16 @@ export const SortOptions = ({ onFiltersChange }: ISortOptionsProps) => {
           icon={<SearchIcon className="search_icon" />}
           type="search"
         />
-        <button onClick={toggleFilters}>toggle filters</button>
+        <Button
+          onClick={toggleFilters}
+          ariaLabel="Mostrar mais filtros"
+          className="filters_headerButton"
+          icon={<FilterIcon className="filters_icon" />}
+          variant="secondary"
+        />
       </div>
       {showMoreFilters && (
-        <div>
-          Gênero
+        <div className="filters_more">
           <Dropdown
             items={genres}
             value={genre}
@@ -66,7 +70,6 @@ export const SortOptions = ({ onFiltersChange }: ISortOptionsProps) => {
             itemValue={(item) => item?.id || ""}
             placeholder="Selecione um gênero"
           />
-          Avaliação
           <Dropdown
             items={ratingOptions}
             value={rating}
@@ -79,6 +82,6 @@ export const SortOptions = ({ onFiltersChange }: ISortOptionsProps) => {
           />
         </div>
       )}
-    </div>
+    </section>
   );
 };

@@ -1,17 +1,20 @@
+import { useEffect, useState } from "react";
+
 import { getMoviesWithFilters, getTrending } from "@/services/movies";
 import { IMovieFilters, IMovieTrending } from "@/types/movies";
-import { useEffect, useState } from "react";
-import { SortOptions } from "./components/SortOptions";
+import { FilterOptions } from "./components/FilterOptions";
+import "./index.scss";
+import { Card } from "@/components/Card";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  const [filters, setFilters] = useState<IMovieFilters>({});
   const [isLoading, setIsLoading] = useState(false);
   const [currentMovies, setCurrentMovies] = useState<
     Array<IMovieTrending> | undefined
   >(undefined);
+  const navigate = useNavigate();
 
   function handleFiltersChange(newFilters: IMovieFilters) {
-    setFilters(newFilters);
     setIsLoading(true);
     getMoviesWithFilters(newFilters)
       .then((response) => {
@@ -29,6 +32,10 @@ export const Home = () => {
       });
   }
 
+  function handleMovieCardClick(movie_id: number) {
+    navigate(`/movie/${movie_id}`);
+  }
+
   useEffect(() => {
     getTrending()
       .then((response) => {
@@ -42,13 +49,33 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
-      <SortOptions onFiltersChange={handleFiltersChange} />
+    <main className="home_container">
+      <FilterOptions onFiltersChange={handleFiltersChange} />
       <br />
       {isLoading && <p>Carregando...</p>}
-      {!isLoading &&
-        currentMovies &&
-        currentMovies.map((movie) => <p key={movie.id}>{movie.title}</p>)}
-    </>
+
+      {!isLoading && currentMovies && (
+        <div className="home_movies">
+          {currentMovies.map((movie) => (
+            <Card
+              key={movie.id}
+              image_path={movie.backdrop_path}
+              movie_genres={movie.genre_ids}
+              movie_name={movie.title}
+              rating={movie.vote_average}
+              onClick={() => {
+                handleMovieCardClick(movie.id);
+              }}
+            />
+          ))}
+        </div>
+      )}
+      {!isLoading && !currentMovies && (
+        <div className="home_empty">
+          <p>Não encontramos nada :(</p>
+          <p>Tente alterar os filtros para novos resultados</p>
+        </div>
+      )}
+    </main>
   );
 };
