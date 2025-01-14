@@ -9,3 +9,12 @@
 
   transition: background-color 0.8s;
 }
+
+body {
+  background: linear-gradient(#12111399, #121113 100%),
+    url("./assets/backgropund-krists-luhaers-unsplash.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 80px;
+  min-height: 100vh;
+}
