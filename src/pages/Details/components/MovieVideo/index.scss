@@ -1,0 +1,14 @@
+.movieVideo_container {
+  iframe {
+    width: 100%;
+    aspect-ratio: 2/1;
+  }
+}
+
+.movieVideo_title {
+  color: var(--color-text-primary);
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}

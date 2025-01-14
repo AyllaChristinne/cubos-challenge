@@ -1,0 +1,56 @@
+.details_container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.details_movieTitle,
+.details_movieOriginalTitle,
+.details_movieTagline,
+.genre_card {
+  font-family: "Montserrat", sans-serif;
+}
+
+.details_movieTitle {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.details_movieOriginalTitle {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.details_movieTagline {
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.details_movieHeaderCards {
+  display: grid;
+  grid-template-columns: minmax(136px, 1fr) minmax(100px, 1fr) 98px;
+  gap: 16px;
+  width: 100%;
+  align-items: center;
+}
+
+.genre_card {
+  background-color: var(--color-primary-alpha-3);
+  padding: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.details_movieGeneralCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.details_movieMoneyCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}

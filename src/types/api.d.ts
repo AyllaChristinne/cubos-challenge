@@ -1,6 +1,11 @@
-import { IMovieGenre, IMovieTrending } from "./movies";
+import {
+  IMovieDetails,
+  IMovieGenre,
+  IMovieTrending,
+  IMovieVideos,
+} from "./movies";
 
-export interface ISuccessfulResponse {
+export interface ISuccessfulMoviesResponse {
   page: number;
   results: Array<IMovieTrending>;
 

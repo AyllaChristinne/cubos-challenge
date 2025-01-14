@@ -1,0 +1,39 @@
+.detailCard_container {
+  min-width: fit-content;
+  padding: 16px;
+  background-color: var(--color-background-elements-secondary);
+  height: fit-content;
+}
+
+.detailCard_title,
+.detailCard_title__big,
+.detailCard_content,
+.detailCard_content__bold {
+  font-family: "Montserrat", sans-serif;
+}
+
+.detailCard_title,
+.detailCard_title__big {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.detailCard_title__big {
+  font-size: 16px;
+}
+
+.detailCard_content,
+.detailCard_content__bold {
+  display: flex;
+  gap: 8px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.detailCard_content__bold {
+  font-weight: 600;
+}
