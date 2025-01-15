@@ -6,13 +6,12 @@
   padding: 0;
   text-decoration: none;
   box-sizing: border-box;
-
-  transition: background-color 0.8s;
 }
 
 body {
-  background: linear-gradient(#12111399, #121113 100%),
-    url("./assets/backgropund-krists-luhaers-unsplash.png"), #121113;
+  background: linear-gradient(var(--color-gradient), var(--color-mauve-1) 100%),
+    url("./assets/backgropund-krists-luhaers-unsplash.png"),
+    var(--color-mauve-1);
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 80px;
