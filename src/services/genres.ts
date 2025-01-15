@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "../config/api";
 import { ISuccessfulGenreResponse } from "../types/api";
 
 export async function getGenres(): Promise<

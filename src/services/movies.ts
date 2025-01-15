@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "../config/api";
 import { ISuccessfulMoviesResponse } from "../types/api";
 import { IMovieDetails, IMovieFilters, IMovieTrending } from "@/types/movies";
 import { applyLocalFilters } from "../functions/applyLocalFilters";
