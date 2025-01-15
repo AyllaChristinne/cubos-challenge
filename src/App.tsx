@@ -5,6 +5,7 @@ import { NotFound } from "./pages/NotFound";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Header } from "./components/Header";
 import { GenreProvider } from "./context/GenreContext";
+import { ErrorComponent } from "./components/Error";
 
 const App = () => {
   return (
@@ -15,7 +16,11 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movie/:id" element={<Details />} />
-            <Route path="*" element={<NotFound />} /> */
+            <Route
+              path="*"
+              element={<ErrorComponent error={new Error()} />}
+            />{" "}
+            */
           </Routes>
         </BrowserRouter>
       </GenreProvider>

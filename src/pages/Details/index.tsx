@@ -1,33 +1,41 @@
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
 import { ImageCard } from "@/components/ImageCard";
 import CircleProgress from "@/components/CircleProgress";
 import { getMovieDetails } from "@/services/movies";
 import { IMovieDetails, IMovieGenre } from "@/types/movies";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { DetailCard } from "./components/DetailCard";
-import "./index.scss";
 import { MovieVideo } from "./components/MovieVideo";
+import {
+  formatDate,
+  formatMinutesToHours,
+  formatRating,
+} from "../../functions/formatInfo";
+import { Loader } from "@/components/Loader";
+import "./index.scss";
+import { ErrorComponent } from "@/components/Error";
 
 export const Details = () => {
   const { id } = useParams();
-  const [movieDetails, setMovieDetails] = useState<IMovieDetails | null>(null);
-  const formattedRating =
-    movieDetails?.vote_average && (movieDetails.vote_average * 10).toFixed();
-
-  function formatDate(inputDate: string) {
-    const [year, month, day] = inputDate.split("-");
-    return `${month}/${day}/${year}`;
-  }
-
-  function formatMinutesToHours(minutes: number) {
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    return `${hours}h${remainingMinutes}m`;
-  }
+  const {
+    data: movieDetails,
+    error,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["movieDetails"],
+    enabled: !!id,
+    queryFn: () => getMovieDetails(id!),
+    retry: false,
+    staleTime: 1000,
+  });
 
   function genresCards(genres: Array<IMovieGenre>) {
     return genres.map((genre) => (
-      <span className="genre_card">{genre.name}</span>
+      <span key={genre.id} className="genre_card">
+        {genre.name}
+      </span>
     ));
   }
 
@@ -41,20 +49,8 @@ export const Details = () => {
     }
   }
 
-  useEffect(() => {
-    if (id) {
-      getMovieDetails(id)
-        .then((response) => {
-          if ("id" in response) {
-            console.log("DETAILS RESPONSE", response);
-            setMovieDetails(response);
-          }
-        })
-        .catch((err) => {
-          console.error("Erro inesperado: ", err);
-        });
-    }
-  }, []);
+  if (isLoading) return <Loader />;
+  if (error) return <ErrorComponent error={error} />;
 
   return movieDetails ? (
     <div className="details_container">
@@ -77,7 +73,7 @@ export const Details = () => {
             content={movieDetails.vote_count}
             isContentBold
           />
-          {formattedRating && <CircleProgress percent={formattedRating} />}
+          <CircleProgress percent={formatRating(movieDetails.vote_average)} />
         </div>
       </div>
       <DetailCard title="sinopse" content={movieDetails.overview} isTitleBig />
