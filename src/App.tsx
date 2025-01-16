@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Details } from "./pages/Details";
-import { NotFound } from "./pages/NotFound";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Header } from "./components/Header";
 import { GenreProvider } from "./context/GenreContext";
 import { ErrorComponent } from "./components/Error";
+import { Footer } from "./components/Footer";
 
 const App = () => {
   return (
@@ -24,6 +24,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </GenreProvider>
+      <Footer />
     </ThemeProvider>
   );
 };
