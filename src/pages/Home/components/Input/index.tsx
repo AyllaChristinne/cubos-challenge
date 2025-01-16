@@ -5,14 +5,14 @@ interface IInputProps {
   placeholder: string;
   name: string;
   type: string;
-  value: string;
+  value: string | undefined;
   onChange: (value: string | undefined) => void;
   icon?: ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>(
   ({ onChange, value, name, placeholder, icon, type }, ref) => {
-    const [localValue, setLocalValue] = useState(value.trim());
+    const [localValue, setLocalValue] = useState(value?.trim());
     const timer = useRef<NodeJS.Timeout | null>(null);
 
     const focusInput = () => {

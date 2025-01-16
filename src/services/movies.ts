@@ -3,12 +3,19 @@ import { ISuccessfulMoviesResponse } from "../types/api";
 import { IMovieDetails, IMovieFilters, IMovieTrending } from "@/types/movies";
 import { applyLocalFilters } from "../functions/applyLocalFilters";
 
-export async function getTrending(): Promise<ISuccessfulMoviesResponse> {
+const getPageForApi = (page: number) => {
+  return Math.ceil(page / 2);
+};
+
+export async function getTrending(
+  currentPage: number
+): Promise<ISuccessfulMoviesResponse> {
   const response = await api.get<ISuccessfulMoviesResponse>(
     "movie/now_playing",
     {
       params: {
         language: "pt-BR",
+        page: getPageForApi(currentPage),
       },
     }
   );
@@ -16,7 +23,8 @@ export async function getTrending(): Promise<ISuccessfulMoviesResponse> {
 }
 
 export async function getMoviesWithFilters(
-  filters: IMovieFilters
+  filters: IMovieFilters,
+  currentPage: number
 ): Promise<ISuccessfulMoviesResponse> {
   const { release_date, query, genre, rating } = filters;
 
@@ -25,6 +33,7 @@ export async function getMoviesWithFilters(
     "vote_average.gte": rating,
     with_genres: genre?.id,
     year: release_date,
+    page: getPageForApi(currentPage),
   }).reduce((acc, [key, value]) => {
     if (value !== undefined) {
       acc[key] = value;

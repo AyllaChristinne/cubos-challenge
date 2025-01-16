@@ -16,7 +16,7 @@ interface IFilterOptionsProps {
 
 export const FilterOptions = ({ onFiltersChange }: IFilterOptionsProps) => {
   const [showMoreFilters, setShowMoreFilters] = useState<boolean>(false);
-  const [search, setSearch] = useState<string | undefined>("");
+  const [search, setSearch] = useState<string | undefined>(undefined);
   const [genre, setGenre] = useState<IMovieGenre | undefined>(undefined);
   const [rating, setRating] = useState<
     { value: number; label: string } | undefined
@@ -28,12 +28,21 @@ export const FilterOptions = ({ onFiltersChange }: IFilterOptionsProps) => {
     setShowMoreFilters(!showMoreFilters);
   }
 
+  const filtersNotEmpty = Object.entries({
+    query: search || undefined,
+    genre,
+    rating: rating?.value,
+  }).reduce((acc, [key, value]) => {
+    if (value !== undefined) {
+      acc[key] = value;
+    }
+    return acc;
+  }, {} as Record<string, string | number | IMovieGenre>);
+
+  console.log;
+
   useEffect(() => {
-    onFiltersChange({
-      query: search,
-      genre,
-      rating: rating?.value,
-    });
+    onFiltersChange(filtersNotEmpty);
   }, [search, genre, rating]);
 
   return (
@@ -46,7 +55,7 @@ export const FilterOptions = ({ onFiltersChange }: IFilterOptionsProps) => {
           }}
           name="Movie Search"
           placeholder="Pesquise por filmes"
-          value={search || ""}
+          value={search || undefined}
           icon={<SearchIcon className="search_icon" />}
           type="search"
         />

@@ -1,0 +1,19 @@
+.pagination_container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: var(--color-mauve-1);
+  margin-top: 24px;
+}
+
+.pagination_previous,
+.pagination_next {
+  width: 64px;
+}
+
+.pagination_button {
+  width: 50px;
+}
