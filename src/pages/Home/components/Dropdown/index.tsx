@@ -111,13 +111,19 @@ export function Dropdown<T>({
             onClick={clearSelection}
             className="dropdown_openerClear"
             aria-label="Clear selection"
+            data-testid="clear_dropdown"
           >
             <CloseIcon className="dropdown_openerClearIcon" />
           </button>
         )}
       </div>
       {isOpen && (
-        <div className="dropdown_menu" ref={menuRef} aria-label="Menu dropdown">
+        <div
+          className="dropdown_menu"
+          aria-label="Menu dropdown"
+          data-testid="dropdown_menu"
+          ref={menuRef}
+        >
           <ul
             role="listbox"
             aria-label="Lista de itens"
@@ -132,6 +138,7 @@ export function Dropdown<T>({
                     tabIndex={-1}
                     aria-label={itemLabel(item)}
                     data-item="dropdown_item"
+                    data-testid="dropdown_item"
                     className="dropdown_itemButton"
                     onClick={() => handleItemSelect(item)}
                     onMouseDown={(e) => e.preventDefault()}

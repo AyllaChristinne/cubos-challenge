@@ -1,5 +1,3 @@
-import { getGenres } from "@/services/genres";
-import { IMovieGenre } from "@/types/movies";
 import {
   createContext,
   PropsWithChildren,
@@ -7,6 +5,8 @@ import {
   useEffect,
   useState,
 } from "react";
+import { getGenres } from "@/services/genres";
+import { IMovieGenre } from "@/types/movies";
 
 const GenreContext = createContext<Array<IMovieGenre>>(
   [] as unknown as Array<IMovieGenre>

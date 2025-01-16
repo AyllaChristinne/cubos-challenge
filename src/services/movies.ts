@@ -26,13 +26,12 @@ export async function getMoviesWithFilters(
   filters: IMovieFilters,
   currentPage: number
 ): Promise<ISuccessfulMoviesResponse> {
-  const { release_date, query, genre, rating } = filters;
+  const { query, genre, rating } = filters;
 
   const params = Object.entries({
     language: "pt-BR",
     "vote_average.gte": rating,
     with_genres: genre?.id,
-    year: release_date,
     page: getPageForApi(currentPage),
   }).reduce((acc, [key, value]) => {
     if (value !== undefined) {

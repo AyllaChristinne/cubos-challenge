@@ -93,5 +93,4 @@ export interface IMovieFilters {
   query?: string;
   genre?: IMovieGenre;
   rating?: number;
-  release_date?: string;
 }

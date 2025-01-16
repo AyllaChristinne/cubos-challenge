@@ -1,6 +1,5 @@
 import axios from "axios";
 import { API_BASE_URL } from "@/constants/endpoints";
-import { useStateContext } from "../context/StateContext";
 
 const api = axios.create({
   baseURL: API_BASE_URL,

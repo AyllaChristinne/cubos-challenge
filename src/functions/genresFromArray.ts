@@ -1,7 +1,9 @@
 import { IMovieGenre } from "@/types/movies";
 
 export function getGenresFromArray(ids: Array<number>) {
-  const genres = JSON.parse(localStorage.getItem("@cubos-movies/genres") || "");
+  const genres = JSON.parse(
+    localStorage.getItem("@cubos-movies/genres") || "[]"
+  );
 
   return (
     genres &&
