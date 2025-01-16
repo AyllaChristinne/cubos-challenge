@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 import { getMoviesWithFilters, getTrending } from "@/services/movies";
 import { IMovieFilters, IMovieTrending } from "@/types/movies";
 import { FilterOptions } from "./components/FilterOptions";
 import { ImageCard } from "@/components/ImageCard";
-import { useNavigate } from "react-router-dom";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Loader } from "@/components/Loader";
 import { ErrorComponent } from "@/components/Error";
 import { Pagination } from "./components/Pagination";
 import "./index.scss";
 
-export const Home = () => {
+export function Home() {
   const [localFilters, setLocalFilters] = useState<IMovieFilters | undefined>(
     undefined
   );
@@ -121,4 +121,4 @@ export const Home = () => {
       )}
     </main>
   );
-};
+}

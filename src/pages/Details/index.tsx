@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-import { ImageCard } from "@/components/ImageCard";
-import CircleProgress from "@/components/CircleProgress";
+import { CircleProgress } from "@/components/CircleProgress";
 import { getMovieDetails } from "@/services/movies";
 import { IMovieDetails, IMovieGenre } from "@/types/movies";
 import { DetailCard } from "./components/DetailCard";
@@ -13,10 +12,10 @@ import {
   formatRating,
 } from "../../functions/formatInfo";
 import { Loader } from "@/components/Loader";
-import "./index.scss";
 import { ErrorComponent } from "@/components/Error";
+import "./index.scss";
 
-export const Details = () => {
+export function Details() {
   const { id } = useParams();
   const {
     data: movieDetails,
@@ -133,4 +132,4 @@ export const Details = () => {
   ) : (
     <p>deu ruim</p>
   );
-};
+}

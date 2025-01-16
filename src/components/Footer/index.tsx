@@ -1,6 +1,6 @@
 import "./index.scss";
 
-export const Footer = () => {
+export function Footer() {
   return (
     <footer className="footer_container">
       <span className="footer_text">
@@ -8,4 +8,4 @@ export const Footer = () => {
       </span>
     </footer>
   );
-};
+}

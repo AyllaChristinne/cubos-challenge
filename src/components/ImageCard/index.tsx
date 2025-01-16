@@ -1,27 +1,28 @@
 import { getGenresFromArray } from "../../functions/genresFromArray";
-import CircleProgress from "../CircleProgress";
+import { CircleProgress } from "../CircleProgress";
 import "./index.scss";
 
 interface ICardProps {
   image_path: string;
-  movie_name?: string;
-  movie_genres?: Array<number>;
-  rating?: number;
-  onClick?: VoidFunction;
+  movie_name: string;
+  movie_genres: Array<number>;
+  rating: number;
+  onClick: VoidFunction;
 }
 
-export const ImageCard = ({
+export function ImageCard({
   image_path,
   movie_genres,
   movie_name,
   rating,
   onClick,
-}: ICardProps) => {
+}: ICardProps) {
   const formattedRating = rating && (rating * 10).toFixed();
   return (
     <div
-      className={`card_container${onClick ? "__withAction" : ""}`}
+      className="card_container"
       onClick={onClick}
+      tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === "Enter" && onClick) onClick();
       }}
@@ -45,4 +46,4 @@ export const ImageCard = ({
       )}
     </div>
   );
-};
+}

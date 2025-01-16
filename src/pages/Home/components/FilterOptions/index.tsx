@@ -14,7 +14,7 @@ interface IFilterOptionsProps {
   onFiltersChange: (newFilters: IMovieFilters) => void;
 }
 
-export const FilterOptions = ({ onFiltersChange }: IFilterOptionsProps) => {
+export function FilterOptions({ onFiltersChange }: IFilterOptionsProps) {
   const [showMoreFilters, setShowMoreFilters] = useState<boolean>(false);
   const [search, setSearch] = useState<string | undefined>(undefined);
   const [genre, setGenre] = useState<IMovieGenre | undefined>(undefined);
@@ -93,4 +93,4 @@ export const FilterOptions = ({ onFiltersChange }: IFilterOptionsProps) => {
       )}
     </section>
   );
-};
+}

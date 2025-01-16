@@ -11,7 +11,7 @@ interface IButtonProps {
   className?: string;
 }
 
-export const Button = ({
+export function Button({
   onClick,
   variant = "primary",
   icon,
@@ -19,7 +19,7 @@ export const Button = ({
   ariaLabel,
   className,
   disabled = false,
-}: IButtonProps) => {
+}: IButtonProps) {
   return (
     <button
       type="button"
@@ -32,4 +32,4 @@ export const Button = ({
       {icon}
     </button>
   );
-};
+}

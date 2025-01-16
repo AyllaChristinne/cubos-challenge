@@ -1,11 +1,10 @@
-import React from "react";
 import "./index.scss";
 
 interface CircleProgressProps {
-  percent: string | 0 | undefined;
+  percent: string | number;
 }
 
-const CircleProgress: React.FC<CircleProgressProps> = ({ percent }) => {
+export function CircleProgress({ percent }: CircleProgressProps) {
   return (
     <div className="circle_container">
       <svg className="circle_progress" viewBox="0 0 36 36">
@@ -23,5 +22,4 @@ const CircleProgress: React.FC<CircleProgressProps> = ({ percent }) => {
       </span>
     </div>
   );
-};
-export default CircleProgress;
+}

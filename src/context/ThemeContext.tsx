@@ -13,7 +13,7 @@ interface IThemeContext {
 
 const ThemeContext = createContext<IThemeContext | undefined>(undefined);
 
-export const ThemeProvider = ({ children }: PropsWithChildren) => {
+export function ThemeProvider({ children }: PropsWithChildren) {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     const storedTheme = localStorage.getItem("@cubos-movies/theme");
     if (storedTheme === "light" || storedTheme === "dark") {
@@ -36,7 +36,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
       <div data-theme={theme}>{children}</div>
     </ThemeContext.Provider>
   );
-};
+}
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);

@@ -1,11 +1,11 @@
 import { useTheme } from "@/context/ThemeContext";
 import { LogoCubos } from "@/icons/LogoCubos";
-import "./index.scss";
 import { SunIcon } from "@/icons/Sun";
 import { MoonIcon } from "@/icons/Moon";
 import { Button } from "../Button";
+import "./index.scss";
 
-export const Header = () => {
+export function Header() {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -31,4 +31,4 @@ export const Header = () => {
       </div>
     </nav>
   );
-};
+}

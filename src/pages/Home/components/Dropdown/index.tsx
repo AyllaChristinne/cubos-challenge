@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import "./index.scss";
+import { useEffect, useRef, useState } from "react";
+
 import { CloseIcon } from "@/icons/Close";
 import { ChevronDownIcon } from "@/icons/ChevronDown";
+import "./index.scss";
 
 interface IDropdownItem {
   value: string | number;
@@ -17,14 +18,14 @@ type DropdownPropsType<T> = {
   placeholder?: string;
 };
 
-export const Dropdown = <T,>({
+export function Dropdown<T>({
   value,
   onChange,
   items,
   itemLabel = (item) => String(item),
   itemValue = (item) => String(item),
   placeholder = "Selecione uma opção",
-}: DropdownPropsType<T>) => {
+}: DropdownPropsType<T>) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -119,4 +120,4 @@ export const Dropdown = <T,>({
       )}
     </div>
   );
-};
+}
