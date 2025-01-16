@@ -1,11 +1,23 @@
+@use "../../styles/mixins";
+
 .home_container {
   padding: 16px;
   min-height: 100vh;
 }
 
 .home_movies {
+  max-width: calc(183px * 5 + 16px * 4);
+  margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+@include mixins.media("XL") {
+  .home_movies {
+    max-width: calc(235px * 5 + 24px * 4);
+    gap: 24px;
+  }
 }

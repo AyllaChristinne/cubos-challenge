@@ -1,3 +1,5 @@
+@use "../../styles/mixins.scss";
+
 .card_container,
 .card_container__withAction {
   width: 183px;
@@ -81,4 +83,12 @@
   left: 50%;
   opacity: 0;
   transform: translate(-50%, -100%);
+}
+
+@include mixins.media("XL") {
+  .card_container,
+  .card_container__withAction {
+    width: 235px;
+    height: 355px;
+  }
 }

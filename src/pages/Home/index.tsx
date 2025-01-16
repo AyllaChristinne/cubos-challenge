@@ -93,7 +93,7 @@ export const Home = () => {
             {moviesToDisplay.map((movie) => (
               <ImageCard
                 key={movie.id}
-                image_path={movie.backdrop_path}
+                image_path={movie.poster_path}
                 movie_genres={movie.genre_ids}
                 movie_name={movie.title}
                 rating={movie.vote_average}

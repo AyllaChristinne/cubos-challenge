@@ -6,6 +6,7 @@ interface IDetailCardProps {
   content: string | ReactNode | Array<ReactNode>;
   isTitleBig?: boolean;
   isContentBold?: boolean;
+  className?: string;
 }
 
 export function DetailCard({
@@ -13,9 +14,10 @@ export function DetailCard({
   title,
   isContentBold = false,
   isTitleBig = false,
+  className,
 }: IDetailCardProps) {
   return (
-    <div className="detailCard_container">
+    <div className={`detailCard_container ${className}`}>
       <p className={`detailCard_title${isTitleBig ? "__big" : ""}`}>{title}</p>
       <p className={`detailCard_content${isContentBold ? "__bold" : ""}`}>
         {content}

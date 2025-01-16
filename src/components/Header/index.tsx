@@ -10,23 +10,25 @@ export const Header = () => {
 
   return (
     <nav className="header">
-      <div className="header_title">
-        <LogoCubos className="header_logo" />
-        <span className="header_text">Movies</span>
+      <div className="header_content">
+        <div className="header_title">
+          <LogoCubos className="header_logo" />
+          <span className="header_text">Movies</span>
+        </div>
+        <Button
+          ariaLabel="Mudar tema de cores"
+          onClick={toggleTheme}
+          className="header_toggleTheme"
+          icon={
+            theme === "dark" ? (
+              <SunIcon className="header_toggleThemeIcon" />
+            ) : (
+              <MoonIcon className="header_toggleThemeIcon" />
+            )
+          }
+          variant="secondary"
+        />
       </div>
-      <Button
-        ariaLabel="Mudar tema de cores"
-        onClick={toggleTheme}
-        className="header_toggleTheme"
-        icon={
-          theme === "dark" ? (
-            <SunIcon className="header_toggleThemeIcon" />
-          ) : (
-            <MoonIcon className="header_toggleThemeIcon" />
-          )
-        }
-        variant="secondary"
-      />
     </nav>
   );
 };
