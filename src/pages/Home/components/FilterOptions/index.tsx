@@ -39,8 +39,6 @@ export function FilterOptions({ onFiltersChange }: IFilterOptionsProps) {
     return acc;
   }, {} as Record<string, string | number | IMovieGenre>);
 
-  console.log;
-
   useEffect(() => {
     onFiltersChange(filtersNotEmpty);
   }, [search, genre, rating]);

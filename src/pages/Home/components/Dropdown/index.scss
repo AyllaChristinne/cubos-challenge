@@ -109,6 +109,11 @@
   width: 100%;
   font-size: 14px;
   color: var(--color-placeholder);
+
+  &:focus-visible,
+  &[aria-selected="true"] {
+    @include mixins.focusBoxShadow;
+  }
 }
 
 @include mixins.media("LG") {

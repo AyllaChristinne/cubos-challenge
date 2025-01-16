@@ -11,7 +11,11 @@ export function MovieVideo({ videos }: IMovieVideoProps) {
   );
 
   if (!youtubeVideo) {
-    return <div>Nenhum vídeo do YouTube encontrado.</div>;
+    return (
+      <p style={{ color: "var(--color-text-primary)" }}>
+        Nenhum vídeo do YouTube encontrado.
+      </p>
+    );
   }
 
   const videoUrl = `https://www.youtube.com/embed/${youtubeVideo.key}`;

@@ -1,13 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { CloseIcon } from "@/icons/Close";
 import { ChevronDownIcon } from "@/icons/ChevronDown";
 import "./index.scss";
-
-interface IDropdownItem {
-  value: string | number;
-  label: string;
-}
+import { handleKeyDown } from "./handleKeyDown";
 
 type DropdownPropsType<T> = {
   value: T | null;
@@ -32,6 +28,13 @@ export function Dropdown<T>({
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
+  const keyDown = useCallback(
+    (event: KeyboardEvent) => {
+      handleKeyDown(event, setIsOpen, menuRef);
+    },
+    [setIsOpen]
+  );
+
   const handleClickOutside = (e: MouseEvent) => {
     if (
       menuRef.current &&
@@ -53,12 +56,25 @@ export function Dropdown<T>({
   useEffect(() => {
     const dropdown = buttonRef.current;
 
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        menuRef.current &&
+        isOpen &&
+        !buttonRef.current?.contains(e.target as Node) &&
+        !menuRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
     if (isOpen && dropdown) {
+      dropdown?.addEventListener("keydown", keyDown);
       document.addEventListener("click", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
+      dropdown?.removeEventListener("keydown", keyDown);
     };
   }, [isOpen]);
 
@@ -70,8 +86,17 @@ export function Dropdown<T>({
         role="button"
         ref={buttonRef}
         onClick={toggleDropdown}
+        onKeyDown={(e: React.KeyboardEvent | undefined) => {
+          if (e?.key === "Enter") {
+            setIsOpen(true);
+          }
+        }}
       >
-        <button className="dropdown_openerButton" tabIndex={-1}>
+        <button
+          className="dropdown_openerButton"
+          tabIndex={-1}
+          data-testid="dropdown_openerButton"
+        >
           {value ? (
             itemLabel(value)
           ) : (
@@ -92,10 +117,10 @@ export function Dropdown<T>({
         )}
       </div>
       {isOpen && (
-        <div className="dropdown_menu" ref={menuRef}>
+        <div className="dropdown_menu" ref={menuRef} aria-label="Menu dropdown">
           <ul
             role="listbox"
-            aria-label="Lista de regiões"
+            aria-label="Lista de itens"
             className="dropdown_list"
           >
             {items.map((item) => {
@@ -106,6 +131,7 @@ export function Dropdown<T>({
                     type="button"
                     tabIndex={-1}
                     aria-label={itemLabel(item)}
+                    data-item="dropdown_item"
                     className="dropdown_itemButton"
                     onClick={() => handleItemSelect(item)}
                     onMouseDown={(e) => e.preventDefault()}

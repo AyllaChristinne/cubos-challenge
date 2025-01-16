@@ -9,7 +9,7 @@ export function Header() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <nav className="header">
+    <header className="header">
       <div className="header_content">
         <div className="header_title">
           <LogoCubos className="header_logo" />
@@ -29,6 +29,6 @@ export function Header() {
           variant="secondary"
         />
       </div>
-    </nav>
+    </header>
   );
 }

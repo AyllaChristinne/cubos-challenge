@@ -21,7 +21,6 @@ export function Home() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalResults, setTotalResults] = useState<number>(0);
   const navigate = useNavigate();
-  console.log("currentPage HOME", currentPage);
 
   const {
     data: trendingData,
@@ -58,9 +57,6 @@ export function Home() {
   const endIndex = startIndex + 10;
   const moviesToDisplay = currentMovies?.slice(startIndex, endIndex);
   const showPagination = currentMovies && currentMovies.length >= 10;
-
-  console.log("trendingData", trendingData);
-  console.log("MOVIES TO DISPLAY", moviesToDisplay);
 
   useEffect(() => {
     if (trendingData) {

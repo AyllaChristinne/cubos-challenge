@@ -37,6 +37,10 @@
     background-color: var(--color-primary-alpha-3);
   }
 
+  &:focus-visible {
+    @include mixins.focusOutline();
+  }
+
   &:active {
     background-color: var(--color-primary-alpha-1);
   }
