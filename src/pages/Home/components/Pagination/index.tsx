@@ -1,8 +1,8 @@
 import { Dispatch, useMemo } from "react";
 
 import { Button } from "@/components/Button";
-import { ChevronLeftIcon } from "@/icons/ChevronLeft";
-import { ChevronRightIcon } from "@/icons/ChevronRight";
+import { ChevronLeftIcon } from "@/components/icons/ChevronLeft";
+import { ChevronRightIcon } from "@/components/icons/ChevronRight";
 import "./index.scss";
 
 interface IPaginationProps {

@@ -3,11 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { useGenres } from "@/context/GenreContext";
 import { IMovieGenre, IMovieFilters } from "@/types/movies";
 import { ratingOptions } from "@/constants/rating";
-import { SearchIcon } from "@/icons/Search";
+import { SearchIcon } from "@/components/icons/Search";
 import { Input } from "../Input";
 import { Dropdown } from "../Dropdown";
 import { Button } from "@/components/Button";
-import { FilterIcon } from "@/icons/Filters";
+import { FilterIcon } from "@/components/icons/Filters";
 import "./index.scss";
 
 interface IFilterOptionsProps {

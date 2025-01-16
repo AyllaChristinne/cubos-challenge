@@ -19,7 +19,6 @@
       "@/services/*": ["services/*"],
       "@/components/*": ["components/*"],
       "@/assets/*": ["assets/*"],
-      "@/icons/*": ["icons/*"],
       "@/context/*": ["context/*"],
       "@/constants/*": ["constants/*"]
     }
