@@ -34,8 +34,9 @@ Esta página apresenta detalhes específicos sobre o filme, incluindo o título,
 2. Entrar no diretório do projeto com `cd cubos-challenge`
 3. Criar arquivo `.env` na raiz do projeto com o conteúdo `REACT_APP_TMDB_API_TOKEN=<seu-api-token>`. O **Token de Leitura da API** pode ser obtido [nas configurações de conta do TMDB](https://www.themoviedb.org/settings/api) após criar uma conta. Certifique-se de usar **Token de Leitura da API** e não "Chave da API".
 4. (Na raiz do projeto) Instalar dependências com `npm i`
-5. (Na raiz do projeto) Executar o projeto com `npm start`
-6. (Na raiz do projeto) É possível executar os testes com `npm test`
+5. (Na raiz do projeto) Executar o projeto com `npm start`. O projeto estará acessível em `http://localhost:3000`
+
+(Na raiz do projeto) É possível executar os testes com `npm test`
 
 # My process
 
